@@ -500,12 +500,85 @@ function open360Viewer(locId) {
     }
     
     updateSidebarActive(locId);
+    
+    // Update URL without triggering hashchange event
+    if (window.location.hash !== '#' + locId) {
+        window.history.pushState(null, '', '#' + locId);
+    }
+}
+
+function close360Viewer(updateHistory = true) {
+    const homeView = document.getElementById('home-view');
+    const viewerView = document.getElementById('viewer-view');
+    
+    viewerView.style.opacity = '0';
+    viewerView.style.transform = 'scale(0.9)';
+    
+    setTimeout(() => {
+        viewerView.classList.add('hidden');
+        homeView.classList.remove('hidden');
+        
+        homeView.style.opacity = '0';
+        homeView.style.transform = 'scale(1.2)';
+        void homeView.offsetWidth; // reflow
+        
+        homeView.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+        homeView.style.opacity = '1';
+        homeView.style.transform = 'scale(1)';
+        
+        if (currentAudio && !currentAudio.paused) {
+            currentAudio.pause();
+            const playBtn = document.getElementById('audio-play-btn');
+            if(playBtn) {
+                const playIcon = document.getElementById('audio-play-icon');
+                const ripple = document.getElementById('audio-ripple');
+                playBtn.classList.remove('playing');
+                playIcon.className = 'fas fa-play';
+                ripple.style.display = 'none';
+                if(typeof currentEqInterval !== 'undefined') clearInterval(currentEqInterval);
+                document.getElementById('audio-equalizer').style.display = 'none';
+                document.getElementById('audio-play-text').textContent = "Nghe thuy?t minh";
+            }
+        }
+        
+        maplibreMap.flyTo({ zoom: 15.5, pitch: 60, speed: 1.5, curve: 1 });
+        if (updateHistory && window.location.hash) {
+            window.history.pushState(null, '', window.location.pathname);
+        }
+    }, 400);
 }
 
 window.addEventListener('load', () => {
     initMap();
     renderMapSidebar();
     renderSidebar(); // Sidebar cũ của Pannellum
+    
+    // Handle routing on first load
+    handleRouting();
+});
+
+function handleRouting() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        const validLoc = locations.find(l => l.id === hash);
+        if (validLoc) {
+            setTimeout(() => {
+                open360Viewer(hash);
+            }, 600); // Wait for initial rendering
+        }
+    }
+}
+
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        const validLoc = locations.find(l => l.id === hash);
+        if (validLoc) {
+            open360Viewer(hash);
+        }
+    } else {
+        close360Viewer(false); // Don't push state since we are reacting to a popstate
+    }
 });
 
 function initPannellum(startScene) {
@@ -863,4 +936,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
 
