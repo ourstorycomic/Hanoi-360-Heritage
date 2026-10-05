@@ -1243,3 +1243,106 @@ body {
     border: 1px solid var(--border-color);
 }
 
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100% !important;
+        height: 40vh;
+        top: auto;
+        bottom: 0;
+        border-right: none;
+        border-top: 1px solid var(--border-glass);
+        z-index: 30;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar:hover {
+        width: 100% !important;
+    }
+
+    .sidebar-header {
+        min-width: 0 !important;
+        padding: 15px 20px;
+    }
+
+    .sidebar-footer {
+        min-width: 0 !important;
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+
+    .header-text, .footer-text, .location-info {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: none !important;
+        margin-left: 10px;
+    }
+
+    .sidebar .location-card {
+        width: 90% !important;
+        height: auto !important;
+        padding: 12px !important;
+        margin: 10px auto !important;
+        background: var(--bg-card);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 16px;
+    }
+
+    .sidebar .location-card .location-icon {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .sidebar-header .logo-icon, .sidebar-footer .footer-icon {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .header-text h1 {
+        font-size: 22px;
+    }
+
+    .footer-text p, .header-text p, .location-info p {
+        white-space: normal !important;
+        font-size: 13px !important;
+    }
+
+    .list-container {
+        flex: 1;
+        overflow-y: auto;
+        padding-bottom: 20px;
+    }
+
+    .app-container {
+        flex-direction: column;
+    }
+
+    /* Landing Page Fixes */
+    .landing-page {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 20px;
+    }
+}
