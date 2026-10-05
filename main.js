@@ -303,7 +303,7 @@ const scenesData = {
                 text: "Vào Chùa Huyền Thiên Quán",
                 icon: "fa-vihara",
                 sceneId: "dongxuan_chuahuyenthien",
-                targetYaw: -90 // nhìn bên trái
+                targetYaw: 90 // nhin vao chua nhìn bên trái
             }
         ]
     },
@@ -311,7 +311,7 @@ const scenesData = {
         locationId: "dong-xuan",
         title: "Chùa Huyền Thiên Quán",
         panorama: "chodongxuan/chuahuyenthienquan.jpg",
-        yaw: -90, // nhìn bên trái
+        yaw: 90, // nhin vao chua
         autoInfo: {
             title: "Chùa Huyền Thiên Quán",
             story: "Sự kỳ diệu của Phố cổ chính là ranh giới mong manh giữa thần linh và người phàm. Nằm lọt thỏm giữa phố Hàng Khoai – nơi giao thương ồn ào và xô bồ bậc nhất, lại là Chùa Huyền Thiên (vốn là Huyền Thiên Quán, một trong Thăng Long Tứ Quán linh thiêng bảo vệ kinh thành). Chỉ bước qua một bậu cửa gỗ, bạn đã bỏ lại mọi náo nhiệt phía sau để bước vào không gian tâm linh tĩnh lặng đã tồn tại hàng ngàn năm.",
@@ -936,6 +936,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
 
 
 
