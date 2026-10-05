@@ -1372,6 +1372,7 @@ body {
     }
     .dashboard-map-container {
         height: 500px !important;
+        flex: none !important;
         width: 100% !important;
     }
     .landing-navbar {
@@ -1393,3 +1394,4 @@ body {
         justify-content: center;
     }
 }
+
