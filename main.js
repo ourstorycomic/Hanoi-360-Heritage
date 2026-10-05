@@ -182,7 +182,7 @@ const scenesData = {
         locationId: "dong-xuan",
         title: "Chợ Đồng Xuân",
         panorama: "chodongxuan/chodongxuan.jpg",
-        yaw: -90, // Quay hướng ngược lại để nhìn thấy chợ
+        yaw: 90, // Quay sang phải để nhìn thẳng vào cổng chợ
         hotSpots: [
             {
                 type: "info",
