@@ -544,7 +544,7 @@ function initPannellum(startScene) {
 
     viewer = pannellum.viewer('map-3d', {
         default: {
-            firstScene: "oquanchuong_congchinh",
+            firstScene: startScene,
             sceneFadeDuration: 1000,
             compass: false,
             showControls: false,
@@ -863,3 +863,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
