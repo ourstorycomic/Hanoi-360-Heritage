@@ -226,7 +226,7 @@ const scenesData = {
         locationId: "dong-xuan",
         title: "Bên trong Chợ Đồng Xuân",
         panorama: "chodongxuan/bentrong.jpg",
-        yaw: 0,
+        yaw: -75,
         autoInfo: {
             title: "Bên trong Chợ Đồng Xuân",
             story: "Bước qua vòm cửa, bạn đang đứng tại trái tim giao thương của Phố cổ. Dưới mái vòm thép khổng lồ này, nhịp sống Kẻ Chợ đã chảy trôi suốt hơn một thế kỷ. Hãy hòa mình vào tiếng ngã giá xôn xao, mùi hương hồi quế phảng phất, và chạm vào các điểm sáng để khám phá những lớp lang lịch sử ẩn giấu ngay giữa đời thường!",
