@@ -351,6 +351,42 @@ function initMap() {
     });
 
     maplibreMap.on('load', () => {
+        // Add 3D buildings layer
+        const layers = maplibreMap.getStyle().layers;
+        let labelLayerId;
+        for (let i = 0; i < layers.length; i++) {
+            if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                labelLayerId = layers[i].id;
+                break;
+            }
+        }
+
+        maplibreMap.addLayer({
+            'id': '3d-buildings',
+            'source': 'carto',
+            'source-layer': 'building',
+            'type': 'fill-extrusion',
+            'minzoom': 14,
+            'paint': {
+                'fill-extrusion-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    14, '#1f2937',
+                    22, '#374151'
+                ],
+                'fill-extrusion-height': [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    14, 0,
+                    15, 15
+                ],
+                'fill-extrusion-base': 0,
+                'fill-extrusion-opacity': 0.8
+            }
+        }, labelLayerId);
+
         locations.forEach(loc => {
             const el = document.createElement('div');
             el.className = 'map-marker';
