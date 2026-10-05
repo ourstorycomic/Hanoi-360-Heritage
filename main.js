@@ -654,7 +654,7 @@ function initPannellum(startScene) {
     const zoomOut = (e) => {
         if (!e.target.closest('.custom-marker-container') && !e.target.closest('.info-overlay') && !e.target.closest('.sidebar')) {
             if (viewer.getHfov() < 100) {
-                viewer.lookAt(viewer.getPitch(), viewer.getYaw(), 100, 1500); // Zoom mượt trong 1.5s
+                viewer.setHfov(100, 1500); // Zoom mượt trong 1.5s
             }
         }
     };
@@ -936,6 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 
 
 
