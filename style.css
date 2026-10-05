@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --primary: #10b981;
     --primary-dark: #059669;
     --bg-dark: #0f172a;
@@ -389,7 +389,7 @@ body {
     font-size: 14px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    /* KHÃ”NG dÃ¹ng transition 'all' Ä‘á»ƒ trÃ¡nh giáº­t lag khi xoay camera (Pannellum Ä‘á»•i transform liÃªn tá»¥c) */
+    /* KHÔNG dùng transition 'all' để tránh giật lag khi xoay camera (Pannellum đổi transform liên tục) */
     transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
     display: flex;
     align-items: center;
@@ -421,7 +421,7 @@ body {
     border-top-color: var(--primary);
 }
 
-/* Kiá»ƒu dÃ¡ng riÃªng cho Scene Hotspot (MÅ©i tÃªn di chuyá»ƒn) */
+/* Kiểu dáng riêng cho Scene Hotspot (Mũi tên di chuyển) */
 .custom-marker-content.scene-type {
     background: rgba(59, 130, 246, 0.85);
     border-color: rgba(59, 130, 246, 0.5);
@@ -468,7 +468,7 @@ body {
     }
 }
 
-/* CÃ¡c hÃ¬nh trÃ²n dÆ°á»›i Ä‘áº¥t Ä‘á»ƒ di chuyá»ƒn (Scene Hotspot) */
+/* Các hình tròn dưới đất để di chuyển (Scene Hotspot) */
 .scene-transition-hotspot {
     width: 40px;
     height: 40px;
@@ -1048,6 +1048,8 @@ body {
 .map-marker {
     cursor: pointer;
     position: relative;
+    width: 40px;
+    height: 40px;
 }
 
 .marker-icon-container {
@@ -1240,3 +1242,4 @@ body {
     font-size: 15px !important;
     border: 1px solid var(--border-color);
 }
+
