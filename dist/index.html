@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kể chuyện Di sản Phố Cổ Hà Nội - 360 Virtual Tour</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Pannellum CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <!-- Maplibre GL JS -->
+    <link href="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.js"></script>
+  <script type="module" crossorigin src="/assets/index-Bi_rHK9b.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-D1dYTQ5C.css">
+</head>
+<body>
+
+    <!-- HOME VIEW: Modern Landing Dashboard -->
+    <div id="home-view" class="landing-page">
+        <!-- Navbar -->
+        <nav class="landing-navbar">
+            <div class="nav-brand"><i class="fas fa-map-marked-alt"></i> Hanoi 360 Heritage</div>
+            <div class="nav-links">
+                <a href="#about">Về dự án</a>
+                <a href="#map-section">Bản đồ Di sản</a>
+                <button id="theme-toggle" class="theme-toggle-btn" title="Chuyển đổi giao diện">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="hero-content">
+                <div class="hanovation-badge">Dự án chuyển đổi số Di sản</div>
+                <h1 class="hero-title">Đánh thức Di sản Phố Cổ<br><span class="highlight-text">Bằng Không Gian 360°</span></h1>
+                <p class="hero-desc">Trải nghiệm những góc nhìn chân thực, lắng nghe những câu chuyện lịch sử bị thời gian vùi lấp. Từ Ô Quan Chưởng rêu phong đến Chợ Đồng Xuân sầm uất, tất cả đều được tái hiện sống động qua lăng kính thực tế ảo.</p>
+                <div class="hero-actions">
+                    <a href="#map-section" class="btn-primary-glow"><i class="fas fa-compass"></i> Bắt đầu hành trình</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="glass-card">
+                    <img src="chodongxuan/cho-dong-xuan.jpg" alt="Preview 360" class="preview-img">
+                    <div class="glass-card-info">
+                        <div class="glass-icon"><i class="fas fa-vr-cardboard"></i></div>
+                        <div>
+                            <h4>Trải nghiệm WebVR</h4>
+                            <p>Tương tác đa chiều chân thực</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="section-header">
+                <h2>Khám phá Kẻ Chợ Xưa & Nay</h2>
+                <p>Nền tảng kể chuyện di sản tương tác đa phương tiện</p>
+            </div>
+            <div class="about-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-camera-retro"></i></div>
+                    <h3>Số hóa 360°</h3>
+                    <p>Tái tạo không gian di sản bằng hình ảnh Panorama chất lượng cao, cho phép bạn tự do quan sát và di chuyển như đang đứng tại không gian thực.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headphones-alt"></i></div>
+                    <h3>Thuyết minh Sinh động</h3>
+                    <p>Mỗi di sản đều mang một câu chuyện. Trải nghiệm âm thanh và lời kể truyền cảm, đánh thức mọi giác quan của người xem.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Lớp lang Lịch sử</h3>
+                    <p>Khám phá sâu hơn qua các điểm thông tin (hotspots), tìm hiểu tài liệu lưu trữ, hình ảnh cũ và sự kiện lịch sử ẩn sau mỗi viên gạch.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Map Section -->
+        <section id="map-section" class="map-dashboard-section">
+            <div class="dashboard-header">
+                <h2>Bản đồ Di sản 3D</h2>
+                <p>Chọn một địa điểm trên bản đồ hoặc danh sách bên dưới để bắt đầu</p>
+            </div>
+            
+            <div class="dashboard-layout">
+                <!-- Sidebar List -->
+                <div class="dashboard-sidebar">
+                    <div class="dashboard-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="map-search" placeholder="Tìm kiếm di sản, địa điểm...">
+                    </div>
+                    <div class="dashboard-list" id="map-locations-list">
+                        <!-- Danh sách địa điểm sẽ được tạo bằng JS -->
+                    </div>
+                </div>
+                
+                <!-- The Maplibre Map -->
+                <div class="dashboard-map-container">
+                    <div id="maplibre-map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+                    <div class="map-overlay-title">
+                        <h3>Hà Nội 3D</h3>
+                        <p>Kéo thả chuột để xoay góc nhìn</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="landing-footer">
+            <p>Dự án Chuyển đổi số Di sản - Sáng tạo trẻ Hà Nội 2026</p>
+        </footer>
+    </div>
+
+    <!-- VIEWER VIEW: Trải nghiệm 360 -->
+    <div id="viewer-view" class="app-container hidden">
+        <!-- Sidebar 360 -->
+        <aside class="sidebar">
+            <div class="sidebar-header" id="back-to-map-btn" style="cursor: pointer; transition: 0.3s;" title="Quay lại Bản đồ 3D">
+                <div class="logo-icon"><i class="fas fa-chevron-left"></i></div>
+                <div class="header-text">
+                    <h1>Quay lại</h1>
+                    <p>Bản đồ 3D Phố Cổ</p>
+                </div>
+            </div>
+            
+            <div class="locations-list" id="locations-list">
+                <!-- Danh sách địa điểm sẽ được tạo bằng JavaScript -->
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="footer-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="footer-text">
+                    <p>Dự án Chuyển đổi số Di sản Phố Cổ</p>
+                    <div class="hanovation-tag">Sáng tạo trẻ Hà Nội 2026</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main 360 Area -->
+        <main class="map-container">
+            <!-- Pannellum Container -->
+            <div id="map-3d" style="width: 100%; height: 100%;"></div>
+            
+            <!-- Overlay thông tin khi click vào điểm -->
+            <div class="info-overlay hidden" id="info-overlay">
+                <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+                
+                <div class="info-header" id="info-header-bg">
+                    <div class="header-gradient">
+                        <div class="info-tags">
+                            <span class="tag"><i class="fas fa-map-marker-alt"></i> Phố Cổ</span>
+                            <span class="tag"><i class="fas fa-history"></i> Di tích</span>
+                        </div>
+                        <h2 id="info-title">Tên di sản</h2>
+                    </div>
+                </div>
+                
+                <div class="modern-audio-player" id="audio-controls-container" style="display: none;">
+                    <div class="player-controls">
+                        <div class="btn-glow-wrapper">
+                            <button class="play-btn-glow" id="audio-play-btn">
+                                <i class="fas fa-play" id="audio-play-icon"></i>
+                            </button>
+                            <div class="ripple" id="audio-ripple"></div>
+                        </div>
+                        <div class="player-track-info">
+                            <span class="track-status" id="audio-play-text">Nghe thuyết minh</span>
+                            <div class="modern-eq" id="audio-equalizer" style="display: none;">
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                                <div class="eq-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-section">
+                    <img id="info-extra-image" class="extra-image" src="" alt="Minh họa phụ" style="display: none;">
+                    <p id="info-description">Nội dung câu chuyện sẽ hiện ở đây...</p>
+                </div>
+            </div>
+            
+            <!-- Hướng dẫn sử dụng -->
+            <div class="map-controls-hint">
+                <i class="fas fa-mouse"></i> Giữ chuột trái và kéo để xoay không gian 360°
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
