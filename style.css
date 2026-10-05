@@ -1357,4 +1357,39 @@ body {
     .map-dashboard-section {
         padding: 40px 20px;
     }
+
+    /* Map Dashboard Fixes for Mobile */
+    .dashboard-layout {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+    .dashboard-sidebar {
+        width: 100% !important;
+        max-height: 300px;
+        overflow-y: auto;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .dashboard-map-container {
+        height: 500px !important;
+        width: 100% !important;
+    }
+    .landing-navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center !important;
+    }
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .hero-visual {
+        display: none !important; /* Hide 3D visual on mobile to save space */
+    }
+    .hero-section {
+        flex-direction: column;
+        justify-content: center;
+    }
 }
